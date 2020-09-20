@@ -6,6 +6,7 @@ import (
 
 	"github.com/Tsuryu/arreglapp-user-profile/app/models"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 // FindBy : fetchs user profile by username
@@ -17,10 +18,12 @@ func FindBy(username string) (*models.UserProfile, error) {
 
 	var result *models.UserProfile
 
-	err := Collection.FindOne(ctx, condition).Decode(result)
+	err := Collection.FindOne(ctx, condition).Decode(&result)
 	if err != nil {
 		return nil, err
 	}
 
+	result.Password = ""
+	result.ID = primitive.NilObjectID
 	return result, nil
 }
