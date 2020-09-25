@@ -15,6 +15,8 @@ func Insert(userProfile models.UserProfile) error {
 
 	bytes, _ := bcrypt.GenerateFromPassword([]byte(userProfile.Password), 6)
 	userProfile.Password = string(bytes)
+	userProfile.CreationDate = time.Now()
+	userProfile.Status = "created"
 
 	_, err := Collection.InsertOne(ctx, userProfile)
 	return err

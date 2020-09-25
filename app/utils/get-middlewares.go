@@ -11,12 +11,10 @@ var middlewarelist = map[string][]gin.HandlerFunc{
 	},
 	"postUserProfile": []gin.HandlerFunc{
 		middlewares.PostUserProfile,
+		middlewares.SendConfirmationEmail,
 	},
-	"putUserProfile": []gin.HandlerFunc{
-		middlewares.ValidateToken,
-	},
-	"deleteUserProfile": []gin.HandlerFunc{
-		middlewares.ValidateToken,
+	"activateProfile": []gin.HandlerFunc{
+		middlewares.ActivateUserProfile,
 	},
 }
 
