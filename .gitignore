@@ -16,3 +16,4 @@
 
 # Debugging
 .vscode/
+.env
