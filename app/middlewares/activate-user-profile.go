@@ -19,5 +19,5 @@ func ActivateUserProfile(context *gin.Context) {
 		return
 	}
 
-	context.HTML(http.StatusOK, "confirmation-email-result.html", gin.H{"username": "username"})
+	context.HTML(http.StatusOK, "confirmation-email-result.html", gin.H{"username": userProfile.Username})
 }
