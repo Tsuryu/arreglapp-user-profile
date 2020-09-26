@@ -7,7 +7,7 @@ import (
 
 // GetUserProfile : handle get user profile request/response
 func GetUserProfile(context *gin.Context) {
-	userProfile, err := userprofileservice.FindBy(context.Param("id"))
+	userProfile, err := userprofileservice.FindBy(context.Param("id"), context.GetHeader("password"))
 	if err != nil {
 		context.JSON(404, gin.H{"message": "User profile " + context.Param("id") + " has not been found"})
 		context.Abort()

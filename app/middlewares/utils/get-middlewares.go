@@ -1,4 +1,4 @@
-package utils
+package middlewareutils
 
 import (
 	"github.com/Tsuryu/arreglapp-user-profile/app/middlewares"
@@ -6,15 +6,16 @@ import (
 )
 
 var middlewarelist = map[string][]gin.HandlerFunc{
-	"getUserProfile": []gin.HandlerFunc{
-		middlewares.GetUserProfile,
-	},
 	"postUserProfile": []gin.HandlerFunc{
 		middlewares.PostUserProfile,
 		middlewares.SendConfirmationEmail,
 	},
 	"activateProfile": []gin.HandlerFunc{
 		middlewares.ActivateUserProfile,
+	},
+	"login": []gin.HandlerFunc{
+		middlewares.LogIn,
+		middlewares.CreateJWT,
 	},
 }
 

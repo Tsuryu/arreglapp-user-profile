@@ -9,11 +9,11 @@ import (
 )
 
 // FindBy : fetchs user profile by username
-func FindBy(username string) (*models.UserProfile, error) {
+func FindBy(username string, password string) (*models.UserProfile, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 
-	condition := bson.M{"username": username}
+	condition := bson.M{"username": username, "password": password}
 
 	var result *models.UserProfile
 
@@ -21,5 +21,12 @@ func FindBy(username string) (*models.UserProfile, error) {
 	if err != nil {
 		return nil, err
 	}
+
+	// data, err := utils.Decrypt(result.Password)
+	// fmt.Println(data)
+	// if err != nil {
+	// 	return nil, err
+	// }
+
 	return result, nil
 }
