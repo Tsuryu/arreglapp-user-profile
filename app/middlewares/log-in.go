@@ -24,7 +24,7 @@ func LogIn(context *gin.Context) {
 		return
 	}
 
-	mapa := make(map[string]interface{})
-	mapa["userProfile"] = userProfile
-	context.Keys = mapa
+	keys := make(map[string]interface{})
+	keys["userProfile"] = userProfile
+	context.Keys = keys
 }

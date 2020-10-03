@@ -9,8 +9,9 @@ import (
 
 // SendConfirmationEmail : handle confirmation email service call
 func SendConfirmationEmail(context *gin.Context) {
+	otp := context.Keys["otp"].(string)
 	userProfile := models.UserProfile{}
 	context.ShouldBindBodyWith(&userProfile, binding.JSON)
 
-	go services.SendEmail(userProfile.Email, userProfile.Username)
+	go services.SendOTPEmail(userProfile.Email, otp)
 }

@@ -10,6 +10,7 @@ import (
 // PostUserProfile : handle post user profile request/response
 func PostUserProfile(context *gin.Context) {
 	userProfile := models.UserProfile{}
+	userProfile.ActivationCode = context.Keys["otp"].(string)
 	context.ShouldBindBodyWith(&userProfile, binding.JSON)
 
 	err := userprofileservice.Insert(userProfile)

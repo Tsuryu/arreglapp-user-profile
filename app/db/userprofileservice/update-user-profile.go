@@ -9,13 +9,14 @@ import (
 )
 
 // Update : updates data in mongo
-func Update(userProfile models.UserProfile) error {
+func Update(userProfile models.UserProfile) (int64, error) {
 	context, cancel := context.WithTimeout(context.Background(), time.Second*15)
 	defer cancel()
 
 	// map string, interface
 	register := make(map[string]interface{})
 	register["status"] = "active"
+	register["activationCode"] = nil
 	updateString := bson.M{
 		"$set": register,
 	}
@@ -24,9 +25,12 @@ func Update(userProfile models.UserProfile) error {
 		"username": bson.M{
 			"$eq": userProfile.Username, // gt
 		},
+		"activationCode": bson.M{
+			"$eq": userProfile.ActivationCode,
+		},
 	}
 
-	_, err := Collection.UpdateOne(context, filter, updateString)
+	result, err := Collection.UpdateOne(context, filter, updateString)
 
-	return err
+	return result.ModifiedCount, err
 }

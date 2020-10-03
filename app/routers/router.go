@@ -11,6 +11,6 @@ func Router() {
 	router.LoadHTMLGlob("./app/templates/*.html")
 	router.POST("/login", utils.GetMiddlewares("login")...)
 	router.POST("/user-profile", utils.GetMiddlewares("postUserProfile")...)
-	router.GET("/user-profile/:id/activate", utils.GetMiddlewares("activateProfile")...)
+	router.PUT("/user-profile/:id/activate", utils.GetMiddlewares("activateProfile")...)
 	router.Run()
 }

@@ -12,12 +12,19 @@ import (
 func ActivateUserProfile(context *gin.Context) {
 	userProfile := models.UserProfile{}
 	userProfile.Username = context.Param("id")
+	userProfile.ActivationCode = context.GetHeader("activation-code")
 
-	err := userprofileservice.Update(userProfile)
+	modifiedCount, err := userprofileservice.Update(userProfile)
+	if modifiedCount == 0 {
+		context.JSON(http.StatusNotFound, gin.H{"message": "Failed to activate user", "id": userProfile.Username})
+		return
+	}
+
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"message": "Failed to activate user", "id": userProfile.Username})
 		return
 	}
 
-	context.HTML(http.StatusOK, "confirmation-email-result.html", gin.H{"username": userProfile.Username})
+	// context.HTML(http.StatusOK, "confirmation-email-result.html", gin.H{"username": userProfile.Username})
+	context.JSON(http.StatusOK, gin.H{"message": "ok"})
 }
