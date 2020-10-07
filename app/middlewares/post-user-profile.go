@@ -1,8 +1,6 @@
 package middlewares
 
 import (
-	"fmt"
-
 	"github.com/Tsuryu/arreglapp-user-profile/app/db/userprofileservice"
 	"github.com/Tsuryu/arreglapp-user-profile/app/models"
 	"github.com/gin-gonic/gin"
@@ -11,7 +9,6 @@ import (
 
 // PostUserProfile : handle post user profile request/response
 func PostUserProfile(context *gin.Context) {
-	fmt.Println("2")
 	userProfile := models.UserProfile{}
 	userProfile.ActivationCode = context.Keys["otp"].(string)
 	context.ShouldBindBodyWith(&userProfile, binding.JSON)

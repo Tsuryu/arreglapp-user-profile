@@ -10,7 +10,6 @@ import (
 
 // Insert : creates an user
 func Insert(userProfile models.UserProfile) error {
-	fmt.Println("3")
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 
@@ -24,7 +23,6 @@ func Insert(userProfile models.UserProfile) error {
 
 	_, err := Collection.InsertOne(ctx, userProfile)
 	if err != nil {
-		fmt.Println("4")
 		fmt.Println(err.Error())
 	}
 	return err
