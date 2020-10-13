@@ -18,6 +18,15 @@ var middlewarelist = map[string][]gin.HandlerFunc{
 		middlewares.LogIn,
 		middlewares.CreateJWT,
 	},
+	"resetPassword": []gin.HandlerFunc{
+		middlewares.ResetPassword,
+		middlewares.CreateResetPasswordTransaction,
+	},
+	"updatePassword": []gin.HandlerFunc{
+		middlewares.ValidateTransaction,
+		middlewares.UpdatePassword,
+		middlewares.FinishTransaction,
+	},
 }
 
 // GetMiddlewares : get array of middlewares by name

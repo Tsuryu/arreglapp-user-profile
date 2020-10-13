@@ -8,31 +8,29 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 )
 
-// Update : updates data in mongo
-func Update(userProfile models.UserProfile) (int64, error) {
+// UpdateByEmail : updates data in mongo
+func UpdateByEmail(userProfile models.UserProfile) (int64, error) {
 	context, cancel := context.WithTimeout(context.Background(), time.Second*15)
 	defer cancel()
 
 	// map string, interface
 	register := make(map[string]interface{})
-	if userProfile.Status != "" {
-		register["status"] = userProfile.Status
-		register["activationCode"] = nil
-	}
+	register["password"] = userProfile.Password
+
 	updateString := bson.M{
 		"$set": register,
 	}
 
 	filter := bson.M{
-		"username": bson.M{
-			"$eq": userProfile.Username, // gt
-		},
-		"activationCode": bson.M{
-			"$eq": userProfile.ActivationCode,
+		"email": bson.M{
+			"$eq": userProfile.Email, // gt
 		},
 	}
 
 	result, err := Collection.UpdateOne(context, filter, updateString)
+	if err != nil {
+		return 0, err
+	}
 
 	return result.ModifiedCount, err
 }

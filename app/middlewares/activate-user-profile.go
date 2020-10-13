@@ -13,6 +13,7 @@ func ActivateUserProfile(context *gin.Context) {
 	userProfile := models.UserProfile{}
 	userProfile.Username = context.Param("id")
 	userProfile.ActivationCode = context.GetHeader("activation-code")
+	userProfile.Status = "active"
 
 	modifiedCount, err := userprofileservice.Update(userProfile)
 	if modifiedCount == 0 {
