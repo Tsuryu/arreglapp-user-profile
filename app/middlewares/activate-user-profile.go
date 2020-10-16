@@ -12,7 +12,6 @@ import (
 func ActivateUserProfile(context *gin.Context) {
 	userProfile := models.UserProfile{}
 	userProfile.Username = context.Param("id")
-	userProfile.ActivationCode = context.GetHeader("activation-code")
 	userProfile.Status = "active"
 
 	modifiedCount, err := userprofileservice.Update(userProfile)
@@ -26,6 +25,5 @@ func ActivateUserProfile(context *gin.Context) {
 		return
 	}
 
-	// context.HTML(http.StatusOK, "confirmation-email-result.html", gin.H{"username": userProfile.Username})
 	context.JSON(http.StatusOK, gin.H{"message": "ok"})
 }

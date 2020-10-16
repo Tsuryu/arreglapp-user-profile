@@ -7,12 +7,13 @@ import (
 
 var middlewarelist = map[string][]gin.HandlerFunc{
 	"postUserProfile": []gin.HandlerFunc{
-		middlewares.GenerateOTP,
 		middlewares.PostUserProfile,
-		middlewares.SendConfirmationEmail,
+		middlewares.CreateUserProfileTransaction,
 	},
 	"activateProfile": []gin.HandlerFunc{
+		middlewares.ValidateTransaction,
 		middlewares.ActivateUserProfile,
+		middlewares.FinishTransaction,
 	},
 	"login": []gin.HandlerFunc{
 		middlewares.LogIn,

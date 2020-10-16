@@ -16,7 +16,8 @@ func ValidateTransaction(context *gin.Context) {
 
 	request := client.R().SetResult(&transaction)
 
-	_, err := request.Get(os.Getenv("API_TRANSACTION_BASE_URL") + "/transaction/" + context.GetHeader("trace-id"))
+	traceID := context.GetHeader("trace-id")
+	_, err := request.Get(os.Getenv("API_TRANSACTION_BASE_URL") + "/transaction/" + traceID)
 	if err != nil {
 		context.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"message": "Invalid transaction"})
 		return

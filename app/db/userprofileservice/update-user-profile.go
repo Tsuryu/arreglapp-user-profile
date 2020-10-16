@@ -17,7 +17,6 @@ func Update(userProfile models.UserProfile) (int64, error) {
 	register := make(map[string]interface{})
 	if userProfile.Status != "" {
 		register["status"] = userProfile.Status
-		register["activationCode"] = nil
 	}
 	updateString := bson.M{
 		"$set": register,
@@ -26,9 +25,6 @@ func Update(userProfile models.UserProfile) (int64, error) {
 	filter := bson.M{
 		"username": bson.M{
 			"$eq": userProfile.Username, // gt
-		},
-		"activationCode": bson.M{
-			"$eq": userProfile.ActivationCode,
 		},
 	}
 
