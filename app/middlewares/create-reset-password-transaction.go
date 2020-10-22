@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"os"
 
+	commonModels "github.com/Tsuryu/arreglapp-commons/app/models"
 	"github.com/Tsuryu/arreglapp-user-profile/app/models"
 	"github.com/gin-gonic/gin"
 	"github.com/go-resty/resty/v2"
@@ -12,7 +13,7 @@ import (
 // CreateResetPasswordTransaction : init transaction
 func CreateResetPasswordTransaction(context *gin.Context) {
 	userProfile := context.Keys["user-profile"].(*models.UserProfile)
-	transaction := models.Transaction{}
+	transaction := commonModels.Transaction{}
 	client := resty.New()
 
 	request := client.R()

@@ -1,6 +1,6 @@
 package userprofileservice
 
-import "github.com/Tsuryu/arreglapp-user-profile/app/db"
+import "github.com/Tsuryu/arreglapp-commons/app/db"
 
 var database = db.Connection.Database("arreglapp")
 

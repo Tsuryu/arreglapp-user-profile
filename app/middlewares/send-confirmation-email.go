@@ -1,8 +1,8 @@
 package middlewares
 
 import (
+	utils "github.com/Tsuryu/arreglapp-commons/app/utils"
 	"github.com/Tsuryu/arreglapp-user-profile/app/models"
-	"github.com/Tsuryu/arreglapp-user-profile/app/services"
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
 )
@@ -13,5 +13,5 @@ func SendConfirmationEmail(context *gin.Context) {
 	userProfile := models.UserProfile{}
 	context.ShouldBindBodyWith(&userProfile, binding.JSON)
 
-	go services.SendOTPEmail(userProfile.Email, otp)
+	go utils.SendEmail(userProfile.Email, otp)
 }

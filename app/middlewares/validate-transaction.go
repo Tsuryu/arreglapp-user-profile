@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/Tsuryu/arreglapp-user-profile/app/models"
+	"github.com/Tsuryu/arreglapp-commons/app/models"
 	"github.com/gin-gonic/gin"
 	"github.com/go-resty/resty/v2"
 )

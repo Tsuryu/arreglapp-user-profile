@@ -11,7 +11,7 @@ import (
 func Router() {
 	router := gin.Default()
 	router.LoadHTMLGlob("./app/templates/*.html")
-	router.POST("/login", utils.GetMiddlewares("login")...)
+	router.POST("/session/login", utils.GetMiddlewares("login")...)
 	router.POST("/user-profile", utils.GetMiddlewares("postUserProfile")...)
 	router.PUT("/user-profile/:id/activate", utils.GetMiddlewares("activateProfile")...)
 	router.POST("/user-profile/:id/reset-password", utils.GetMiddlewares("resetPassword")...)

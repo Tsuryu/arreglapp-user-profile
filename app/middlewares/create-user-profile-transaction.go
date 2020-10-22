@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"os"
 
+	commonModels "github.com/Tsuryu/arreglapp-commons/app/models"
 	"github.com/Tsuryu/arreglapp-user-profile/app/models"
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
@@ -14,7 +15,7 @@ import (
 func CreateUserProfileTransaction(context *gin.Context) {
 	userProfile := models.UserProfile{}
 	context.ShouldBindBodyWith(&userProfile, binding.JSON)
-	transaction := models.Transaction{}
+	transaction := commonModels.Transaction{}
 	client := resty.New()
 
 	request := client.R()
