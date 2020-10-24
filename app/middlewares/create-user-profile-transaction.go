@@ -21,7 +21,7 @@ func CreateUserProfileTransaction(context *gin.Context) {
 	transactionDetail.Metadata = struct {
 		Step string `json:"step"`
 	}{"init enrollment"}
-	transaction.Reference = "create user profile"
+	transaction.Reference = "new-user"
 	transaction.Email = userProfile.Email
 	transaction.Details = append(transaction.Details, transactionDetail)
 
