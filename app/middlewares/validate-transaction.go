@@ -25,7 +25,7 @@ func ValidateTransaction(context *gin.Context) {
 
 	var validTransaction bool
 	for _, detail := range transaction.Details {
-		if detail.Status == "confirm" {
+		if detail.Status == "confirmed" {
 			validTransaction = true
 		}
 	}

@@ -15,7 +15,7 @@ func FinishTransaction(context *gin.Context) {
 	code := context.GetHeader("security-code")
 
 	request := client.R()
-	request.SetBody(`{"status":"finished"}`)
+	request.SetBody(`{"step":"finished"}`)
 	request.SetHeader("security-code", code)
 	request.SetHeader("last-update", "true")
 
