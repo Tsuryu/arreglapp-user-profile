@@ -1,6 +1,8 @@
 package routers
 
 import (
+	"os"
+
 	utils "github.com/Tsuryu/arreglapp-user-profile/app/middlewares/utils"
 	"github.com/gin-gonic/gin"
 )
@@ -14,5 +16,5 @@ func Router() {
 	router.PUT("/user-profile/:id/activate", utils.GetMiddlewares("activateProfile")...)
 	router.POST("/user-profile/:id/reset-password", utils.GetMiddlewares("resetPassword")...)
 	router.PUT("/user-profile/:id/password", utils.GetMiddlewares("updatePassword")...)
-	router.Run(":8080")
+	router.Run(":" + os.Getenv("APP_PORT"))
 }
