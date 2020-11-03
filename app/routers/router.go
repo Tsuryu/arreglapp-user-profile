@@ -2,6 +2,7 @@ package routers
 
 import (
 	"os"
+	"strconv"
 
 	utils "github.com/Tsuryu/arreglapp-user-profile/app/middlewares/utils"
 	"github.com/gin-gonic/gin"
@@ -16,5 +17,11 @@ func Router() {
 	router.PUT("/user-profile/:id/activate", utils.GetMiddlewares("activateProfile")...)
 	router.POST("/user-profile/:id/reset-password", utils.GetMiddlewares("resetPassword")...)
 	router.PUT("/user-profile/:id/password", utils.GetMiddlewares("updatePassword")...)
-	router.Run(":" + os.Getenv("APP_PORT"))
+
+	port, err := strconv.Atoi(os.Getenv("APP_PORT"))
+	if err == nil {
+		router.Run(":" + strconv.Itoa(port))
+	} else {
+		router.Run()
+	}
 }
