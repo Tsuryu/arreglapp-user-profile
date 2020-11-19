@@ -19,6 +19,7 @@ func CreateJWT(userProfile *models.UserProfile) (string, error) {
 		"first_name": userProfile.FirstName,
 		"last_name":  userProfile.LastName,
 		"email":      userProfile.Email,
+		"phone":      userProfile.Phone,
 		"exp":        time.Now().Add(time.Hour * 24).Unix(),
 	}
 
