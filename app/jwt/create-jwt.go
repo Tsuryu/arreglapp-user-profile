@@ -21,6 +21,7 @@ func CreateJWT(userProfile *models.UserProfile) (string, error) {
 		"email":      userProfile.Email,
 		"phone":      userProfile.Phone,
 		"exp":        time.Now().Add(time.Hour * 24).Unix(),
+		"token":      userProfile.Token,
 	}
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, payload)

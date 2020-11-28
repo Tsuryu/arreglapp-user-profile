@@ -6,27 +6,31 @@ import (
 )
 
 var middlewarelist = map[string][]gin.HandlerFunc{
-	"postUserProfile": []gin.HandlerFunc{
+	"postUserProfile": {
 		middlewares.PostUserProfile,
 		middlewares.CreateUserProfileTransaction,
 	},
-	"activateProfile": []gin.HandlerFunc{
+	"activateProfile": {
 		middlewares.ValidateTransaction,
 		middlewares.ActivateUserProfile,
 		middlewares.FinishTransaction,
 	},
-	"login": []gin.HandlerFunc{
+	"login": {
 		middlewares.LogIn,
+		middlewares.UpdateDeviceToken,
 		middlewares.CreateJWT,
 	},
-	"resetPassword": []gin.HandlerFunc{
+	"resetPassword": {
 		middlewares.ResetPassword,
 		middlewares.CreateResetPasswordTransaction,
 	},
-	"updatePassword": []gin.HandlerFunc{
+	"updatePassword": {
 		middlewares.ValidateTransaction,
 		middlewares.UpdatePassword,
 		middlewares.FinishTransaction,
+	},
+	"pushNotification": {
+		middlewares.GetPushNotificationID,
 	},
 }
 

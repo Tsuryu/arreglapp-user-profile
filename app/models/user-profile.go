@@ -19,4 +19,5 @@ type UserProfile struct {
 	Phone        string
 	City         string
 	Address      string
+	Token        string `bson:"token" json:"token,omitempty"`
 }

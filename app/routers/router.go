@@ -17,6 +17,7 @@ func Router() {
 	router.PUT("/user-profile/:id/activate", utils.GetMiddlewares("activateProfile")...)
 	router.POST("/user-profile/:id/reset-password", utils.GetMiddlewares("resetPassword")...)
 	router.PUT("/user-profile/:id/password", utils.GetMiddlewares("updatePassword")...)
+	router.GET("/user-profile/:id/push-notification", utils.GetMiddlewares("pushNotification")...)
 
 	port, err := strconv.Atoi(os.Getenv("APP_PORT"))
 	if err == nil {
