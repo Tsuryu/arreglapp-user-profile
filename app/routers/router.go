@@ -14,6 +14,8 @@ func Router() {
 	router.LoadHTMLGlob("./app/templates/*.html")
 	router.POST("/session/login", utils.GetMiddlewares("login")...)
 	router.POST("/user-profile", utils.GetMiddlewares("postUserProfile")...)
+	router.GET("/my-profile", utils.GetMiddlewares("getMyProfile")...)
+	router.PUT("/user-profile", utils.GetMiddlewares("putUserProfile")...)
 	router.PUT("/user-profile/:id/activate", utils.GetMiddlewares("activateProfile")...)
 	router.POST("/user-profile/:id/reset-password", utils.GetMiddlewares("resetPassword")...)
 	router.PUT("/user-profile/:id/password", utils.GetMiddlewares("updatePassword")...)

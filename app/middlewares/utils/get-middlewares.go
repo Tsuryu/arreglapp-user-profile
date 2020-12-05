@@ -1,6 +1,7 @@
 package middlewareutils
 
 import (
+	commonMiddlewares "github.com/Tsuryu/arreglapp-commons/app/middlewares"
 	"github.com/Tsuryu/arreglapp-user-profile/app/middlewares"
 	"github.com/gin-gonic/gin"
 )
@@ -31,6 +32,14 @@ var middlewarelist = map[string][]gin.HandlerFunc{
 	},
 	"pushNotification": {
 		middlewares.GetPushNotificationID,
+	},
+	"getMyProfile": {
+		commonMiddlewares.ValidateJwt,
+		middlewares.GetMyProfile,
+	},
+	"putUserProfile": {
+		commonMiddlewares.ValidateJwt,
+		middlewares.PutUserProfile,
 	},
 }
 

@@ -16,8 +16,8 @@ type UserProfile struct {
 	CreationDate time.Time          `bson:"creationDate" json:"-"`
 	Status       string             `json:"-"`
 	Email        string             `bson:"email" json:"email,omitempty"`
-	Phone        string
-	City         string
-	Address      string
-	Token        string `bson:"token" json:"token,omitempty"`
+	Phone        string             `json:"phone,omitempty"`
+	City         string             `json:"city,omitempty"`
+	Address      string             `json:"address,omitempty"`
+	Token        string             `bson:"token" json:"token,omitempty"`
 }

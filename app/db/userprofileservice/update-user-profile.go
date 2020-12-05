@@ -18,6 +18,21 @@ func Update(userProfile models.UserProfile) (int64, error) {
 	if userProfile.Status != "" {
 		register["status"] = userProfile.Status
 	}
+	if userProfile.FirstName != "" {
+		register["firstName"] = userProfile.FirstName
+	}
+	if userProfile.LastName != "" {
+		register["lastName"] = userProfile.LastName
+	}
+	if userProfile.Phone != "" {
+		register["phone"] = userProfile.Phone
+	}
+	if userProfile.Address != "" {
+		register["address"] = userProfile.Address
+	}
+	if userProfile.Email != "" {
+		register["email"] = userProfile.Email
+	}
 	updateString := bson.M{
 		"$set": register,
 	}
