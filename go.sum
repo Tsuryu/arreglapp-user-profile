@@ -7,6 +7,8 @@ github.com/Tsuryu/arreglapp-commons v0.0.13 h1:YysdBM5FOuPLsrDkgcgM+j4dMlaoS2MP+
 github.com/Tsuryu/arreglapp-commons v0.0.13/go.mod h1:8icAcCxpgNX2BdlAXLevBjoi3Q4on/s9TVKZXoz9ayM=
 github.com/Tsuryu/arreglapp-commons v0.0.21 h1:mSRUuYu76Gr1a0L/giG23qwYsL3EbR5+ifDKlUdb4uQ=
 github.com/Tsuryu/arreglapp-commons v0.0.21/go.mod h1:8icAcCxpgNX2BdlAXLevBjoi3Q4on/s9TVKZXoz9ayM=
+github.com/Tsuryu/arreglapp-commons v0.0.22 h1:titrXYN95ydmGGLVsfOXdC03lXtrmOQdlSyPPgwAe7M=
+github.com/Tsuryu/arreglapp-commons v0.0.22/go.mod h1:8icAcCxpgNX2BdlAXLevBjoi3Q4on/s9TVKZXoz9ayM=
 github.com/aws/aws-sdk-go v1.34.28 h1:sscPpn/Ns3i0F4HPEWAVcwdIRaZZCuL7llJ2/60yPIk=
 github.com/aws/aws-sdk-go v1.34.28/go.mod h1:H7NKnBqNVzoTJpGfLrQkkD+ytBA93eiDYi/+8rV9s48=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
